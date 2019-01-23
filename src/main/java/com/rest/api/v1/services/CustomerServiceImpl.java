@@ -26,7 +26,6 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public List<CustomerDTO> getAllCustomers() {
-		System.out.println();
 		return customerRepo.findAll()
 				.stream()
 				.map(customer -> {
@@ -44,7 +43,7 @@ public class CustomerServiceImpl implements CustomerService {
         .orElseThrow(RuntimeException::new); //todo implement better exception handling
 	}
 	
-	public CustomerDTO saveAndReturnDTO (Customer customer) {
+	private CustomerDTO saveAndReturnDTO (Customer customer) {
 		Customer savedCustomer = customerRepo.save(customer);
 		CustomerDTO savedCustomerDTO = mapper.customerToCustomerDTO(savedCustomer);
 		savedCustomerDTO.setCustomerUrl(getCustomerUrl(savedCustomer.getId()));

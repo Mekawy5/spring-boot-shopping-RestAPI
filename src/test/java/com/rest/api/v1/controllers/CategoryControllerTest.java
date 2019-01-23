@@ -43,10 +43,10 @@ public class CategoryControllerTest {
 	public void testListCategories() throws Exception {
 		CategoryDTO cat1 = new CategoryDTO();
 		cat1.setId(1L);
-		cat1.setName("Fruits");
+		cat1.setName("Mobiles");
 		CategoryDTO cat2 = new CategoryDTO();
 		cat2.setId(2L);
-		cat2.setName("Vegs");
+		cat2.setName("Laptops");
 		
 		List<CategoryDTO> categories = Arrays.asList(cat1, cat2);
 		
@@ -61,12 +61,12 @@ public class CategoryControllerTest {
 	public void testGetCategoryByName() throws Exception{
 		CategoryDTO cat = new CategoryDTO();
 		cat.setId(1L);
-		cat.setName("Fruits");
+		cat.setName("Mobiles");
 		when(categoryService.getCategoryByName(anyString())).thenReturn(cat);
 		
-		mockMvc.perform(get("/api/v1/categories/Fruits").contentType(MediaType.APPLICATION_JSON))
+		mockMvc.perform(get("/api/v1/categories/Mobiles").contentType(MediaType.APPLICATION_JSON))
 		.andExpect(status().isOk())
-		.andExpect(jsonPath("$.name", equalTo("Fruits")));
+		.andExpect(jsonPath("$.name", equalTo("Mobiles")));
 	}
 	
 }

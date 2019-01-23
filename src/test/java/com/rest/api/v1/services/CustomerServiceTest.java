@@ -86,6 +86,7 @@ public class CustomerServiceTest {
 		// given
 		CustomerDTO customerDTO = new CustomerDTO();
 		customerDTO.setFirstName("James");
+		customerDTO.setLastName("Milner");
 		Customer savedCustomer = new Customer();
 		savedCustomer.setFirstName(customerDTO.getFirstName());
 		savedCustomer.setLastName(customerDTO.getLastName());
@@ -98,6 +99,7 @@ public class CustomerServiceTest {
 		
 		// then
 		assertEquals(customerDTO.getFirstName(), savedDTO.getFirstName());
+		assertEquals("Milner", savedDTO.getLastName());
 		assertEquals("/api/v1/customers/1", savedDTO.getCustomerUrl());
 	}
 	
